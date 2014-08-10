@@ -21,11 +21,12 @@ module LinkerTool
         @str[@str.length-1][1].gsub!(")","")
       end
       
-      render 'layouts/linker_tool/_linker'
+      # render 'layouts/linker_tool/_linker'
       
-      # str = render_to_string(:partial => 'linker/linker')
-      # str = ERB.new(str).result
-      # str.gsub!("\r\n","")
+      str = render_to_string(:partial => 'linker/linker')
+      str = ERB.new(str).result
+      str.gsub!("\r\n","")
+      return str
       # render :text => str, :layout => true
     end
   end
