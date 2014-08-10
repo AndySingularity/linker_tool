@@ -1,6 +1,7 @@
 module LinkerTool
   class ApplicationController < ActionController::Base
-    def main_plate
+    def main_plate(prms)
+      @params = prms
       test_routes = []
   
       Rails.application.routes.routes.each do |route|
