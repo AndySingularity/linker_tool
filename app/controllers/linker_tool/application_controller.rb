@@ -26,6 +26,7 @@ module LinkerTool
       str = render_to_string(:partial => 'layouts/linker_tool/_linker')
       str = ERB.new(str).result
       str.gsub!("\r\n","")
+      # render partial: 'layouts/linker_tool/linker'
       return str
       # render :text => str, :layout => true
     end
