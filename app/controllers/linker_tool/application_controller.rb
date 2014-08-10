@@ -21,7 +21,7 @@ module LinkerTool
         @str[@str.length-1][1].gsub!(")","")
       end
 
-      str = render_to_string(:partial => 'layouts/linker_tool/_linker', :layout => false)
+      str = render_to_string(:partial => 'layouts/linker_tool/linker', :layout => false)
       return str.html_safe
     end
   end
