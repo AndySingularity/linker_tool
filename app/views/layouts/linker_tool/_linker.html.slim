@@ -1,76 +1,79 @@
-div#linker_form_gem style="background-image: url(http://svite-league-apps-content.s3.amazonaws.com/bgimages/grunge-paper.jpg);"
-	div.row.center
-		div.col-md-10.col-md-offset-1
-			br
-			pre
-					h3
-							| Параметры:
-					= @params.inspect
-	
-	div.row.center
-		div.col-md-10.col-md-offset-1
-			h1
-				| Форма:
-			pre
-				= @main_linker_form
-			br
-			br
-			br
-			pre.col-md-12 style="display: none;" id="edit_input_form"
-			pre.col-md-8.col-md-offset-2
-				h3
-					| Добавление нового input
-				br
-				| Имя и id: 
-				= text_field_tag "new_input_name"
-				br
-				| Тип: 
-				= select_tag("new_input_type", options_for_select(['text','button','checkbox','file','hidden','image','password','radio','reset','submit','color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week']))
-				br
-				= submit_tag "Добавить input", id: "new_input_submit"
-				= submit_tag "Очистить", id: "new_input_clear"
-				= submit_tag "Удалить все", id: "new_input_delete_all"
-	
-			pre.col-md-8.col-md-offset-2
-				h3
-					| Функции формы
-				| Адрес для перехода (Дефолтно - покажет параметры)
-				br
-				= text_field_tag "link"
-				br
-				| Тип запроса
-				br
-				= select_tag("mtd", options_for_select(['get','post','patch','put','delete']))
-				br
-				br
-				= submit_tag "Сохранить cookie этой формы", id: "save_form_cookie"
-				br
-				= submit_tag "Удалить cookie этой формы", id: "delete_form_cookie"
-				br
-				br
-				= submit_tag "Перейти", id: "main_linker_form_submit"
-	
-			pre.col-md-8.col-md-offset-2
-				= submit_tag "Html формы", id: "full_form_html"
-				br
-				<textarea readonly id="full_form_html_textarea" style="display: none;width: 100%;"></textarea>
-				
-			pre.col-md-8.col-md-offset-2
-				= submit_tag "Роуты", id: "full_routes_button"
-				br
-				br
-				div#full_routes style="display: none;"
-					table border="1" style="width: 100%;"
-						tr
-							th
-								| Путь
-							th
-								| Метод
-						- @str.each do |str|
-							tr
-								td
-									h5
-										= str[0]
-								td
-									h5
-										= str[1]
+div#linker_form_gem
+  div.center
+    = submit_tag "Linker Tool", id: "show_all_linker_components", type: "button"
+  div#linker_form_gem_main_panel style="background-image: url(http://svite-league-apps-content.s3.amazonaws.com/bgimages/grunge-paper.jpg);display: none;"
+  	div.row.center
+  		div.col-md-10.col-md-offset-1
+  			br
+  			pre
+  					h3
+  							| Параметры:
+  					= @params.inspect
+  	
+  	div.row.center
+  		div.col-md-10.col-md-offset-1
+  			h1
+  				| Форма:
+  			pre
+  				= @main_linker_form
+  			br
+  			br
+  			br
+  			pre.col-md-12 style="display: none;" id="edit_input_form"
+  			pre.col-md-12
+  				h3
+  					| Добавление нового input
+  				br
+  				| Имя и id: 
+  				= text_field_tag "new_input_name"
+  				br
+  				| Тип: 
+  				= select_tag("new_input_type", options_for_select(['text','button','checkbox','select','file','hidden','image','password','radio','reset','submit','color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week']))
+  				br
+  				= button_tag "Добавить input", id: "new_input_submit", type: "button"
+  				= button_tag "Очистить", id: "new_input_clear", type: "button"
+  				= button_tag "Удалить все", id: "new_input_delete_all", type: "button"
+  	
+  			pre.col-md-12
+  				h3
+  					| Функции формы
+  				| Адрес для перехода (Дефолтно - покажет параметры)
+  				br
+  				= text_field_tag "link"
+  				br
+  				| Тип запроса
+  				br
+  				= select_tag("mtd", options_for_select(['get','post','patch','put','delete']))
+  				br
+  				br
+  				= button_tag "Сохранить cookie этой формы", id: "save_form_cookie", type: "button"
+  				br
+  				= button_tag "Удалить cookie этой формы", id: "delete_form_cookie", type: "button"
+  				br
+  				br
+  				= submit_tag "Перейти", id: "main_linker_form_submit", type: "button"
+  	
+  			pre.col-md-12
+  				= button_tag "Html формы", id: "full_form_html", type: "button"
+  				br
+  				<textarea readonly id="full_form_html_textarea" style="display: none;width: 100%;"></textarea>
+  				
+  			pre.col-md-12
+  				= button_tag "Роуты", id: "full_routes_button", type: "button"
+  				br
+  				br
+  				div#full_routes style="display: none;"
+  					table border="1" style="width: 100%;"
+  						tr
+  							th
+  								| Путь
+  							th
+  								| Метод
+  						- @str.each do |str|
+  							tr
+  								td
+  									h5
+  										= str[0]
+  								td
+  									h5
+  										= str[1]
