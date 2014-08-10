@@ -173,6 +173,7 @@ $(document).ready(function() {
 			show_full_form_html(false);
 		});
 	}
+	
 	function writeCookie(name,value,days) {
 		var date, expires;
 		if (days) {
@@ -184,6 +185,7 @@ $(document).ready(function() {
 		}
 		document.cookie = name + "=" + value + expires + "; path=/";
 	}
+	
 	function readCookie(name) {
 		var i, c, ca, nameEQ = name + "=";
 		ca = document.cookie.split(';');
@@ -198,6 +200,7 @@ $(document).ready(function() {
 		}
 		return '';
 	}
+	
 	function change_method(){
 		if ($("div#linker_form_gem #mtd").val() === "get") { 
 				main_form.attr("method","get");
@@ -207,12 +210,14 @@ $(document).ready(function() {
 				set_post_method($("div#linker_form_gem #mtd").val());
 		}
 	}
+	
 	function check_num(){
 		if (main_form.children().length > 1) {
 			num = parseInt(main_form.children().last().attr("id")) + 1;
 			console.log(num);
 		}
 	}
+	
 	function show_full_form_html(tgl){
 		var txta = $("div#linker_form_gem #full_form_html_textarea");
 		if (tgl){
