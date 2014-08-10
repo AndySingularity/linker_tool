@@ -12,7 +12,9 @@ div#linker_form_gem style="background-image: url(http://svite-league-apps-conten
 			h1
 				| Форма:
 			pre
-				= form_tag("#", :method => :post, id: "main_linker_form") do
+				form accept-charset="UTF-8" action="#" id="main_linker_form" method="get"
+                    div style="margin:0;padding:0;display:inline"
+                        input name="utf8" type="hidden" value="✓"
 			
 			br
 			br
