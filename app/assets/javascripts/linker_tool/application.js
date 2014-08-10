@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-
 $(document).ready(function() {
 	var main_form = $("form#main_linker_form");
 	var main_form_div = $("form#main_linker_form div");
