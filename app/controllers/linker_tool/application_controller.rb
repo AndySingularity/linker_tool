@@ -20,7 +20,7 @@ module LinkerTool
         @str[@str.length-1][1].gsub!(")","")
       end
       
-      render '_linker'
+      render 'layouts/linker_tool/_linker'
       
       # str = render_to_string(:partial => 'linker/linker')
       # str = ERB.new(str).result
