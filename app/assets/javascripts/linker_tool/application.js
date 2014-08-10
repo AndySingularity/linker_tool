@@ -19,7 +19,6 @@ $(document).ready(function() {
 	var main_form_div = $("form#main_linker_form div");
 	var edit_form = $("pre#edit_input_form");
 	var last_form_html = localStorage.getItem("linker_form_gem_html");
-	console.log(last_form_html);
 	if (last_form_html !== "") {
 		main_form.replaceWith(last_form_html);
 		main_form = $("form#main_linker_form");
