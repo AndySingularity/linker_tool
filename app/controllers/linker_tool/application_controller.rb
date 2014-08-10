@@ -2,7 +2,6 @@ module LinkerTool
   class ApplicationController < ActionController::Base
     def main_plate
       test_routes = []
-      # render '_linker'
   
       Rails.application.routes.routes.each do |route|
         r = route.path.spec.to_s
@@ -20,9 +19,12 @@ module LinkerTool
         @str[@str.length-1][1].gsub!("(?-mix:","")
         @str[@str.length-1][1].gsub!(")","")
       end
-      str = render_to_string(:partial => 'linker/linker')
-      str = ERB.new(str).result
-      str.gsub!("\r\n","")
+      
+      render '_linker'
+      
+      # str = render_to_string(:partial => 'linker/linker')
+      # str = ERB.new(str).result
+      # str.gsub!("\r\n","")
       # render :text => str, :layout => true
     end
   end
