@@ -1,0 +1,77 @@
+div#linker_form_gem style="background-image: url(http://svite-league-apps-content.s3.amazonaws.com/bgimages/grunge-paper.jpg);"
+	div.row.center
+		div.col-md-10.col-md-offset-1
+			br
+			pre
+					h3
+							| Параметры:
+					= @params.inspect
+	
+	div.row.center
+		div.col-md-10.col-md-offset-1
+			h1
+				| Форма:
+			pre
+				= form_tag(root_path, :method => :post, id: "main_linker_form") do
+			
+			br
+			br
+			br
+			pre.col-md-12 style="display: none;" id="edit_input_form"
+			pre.col-md-8.col-md-offset-2
+				h3
+					| Добавление нового input
+				br
+				| Имя и id: 
+				= text_field_tag "new_input_name"
+				br
+				| Тип: 
+				= select_tag("new_input_type", options_for_select(['text','button','checkbox','file','hidden','image','password','radio','reset','submit','color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week']))
+				br
+				= submit_tag "Добавить input", id: "new_input_submit"
+				= submit_tag "Очистить", id: "new_input_clear"
+				= submit_tag "Удалить все", id: "new_input_delete_all"
+	
+			pre.col-md-8.col-md-offset-2
+				h3
+					| Функции формы
+				| Адрес для перехода (Дефолтно - покажет параметры)
+				br
+				= text_field_tag "link"
+				br
+				| Тип запроса
+				br
+				= select_tag("mtd", options_for_select(['get','post','patch','put','delete']))
+				br
+				br
+				= submit_tag "Сохранить cookie этой формы", id: "save_form_cookie"
+				br
+				= submit_tag "Удалить cookie этой формы", id: "delete_form_cookie"
+				br
+				br
+				= submit_tag "Перейти", id: "main_linker_form_submit"
+	
+			pre.col-md-8.col-md-offset-2
+				= submit_tag "Html формы", id: "full_form_html"
+				br
+				<textarea readonly id="full_form_html_textarea" style="display: none;width: 100%;"></textarea>
+				
+			pre.col-md-8.col-md-offset-2
+				= submit_tag "Роуты", id: "full_routes_button"
+				br
+				br
+				div#full_routes style="display: none;"
+					table border="1" style="width: 100%;"
+						tr
+							th
+								| Путь
+							th
+								| Метод
+						- @str.each do |str|
+							tr
+								td
+									h5
+										= str[0]
+								td
+									h5
+										= str[1]
