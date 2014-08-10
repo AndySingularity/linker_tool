@@ -20,15 +20,9 @@ module LinkerTool
         @str[@str.length-1][1].gsub!("(?-mix:","")
         @str[@str.length-1][1].gsub!(")","")
       end
-      
-      # render 'layouts/linker_tool/_linker'
-      
-      str = render_to_string(:partial => 'layouts/linker_tool/_linker')
-      str = ERB.new(str).result
-      str.gsub!("\r\n","")
-      # render partial: 'layouts/linker_tool/linker'
-      return str
-      # render :text => str, :layout => true
+
+      str = render_to_string(:partial => 'layouts/linker_tool/_linker', :layout => false)
+      return str.html_safe
     end
   end
 end
