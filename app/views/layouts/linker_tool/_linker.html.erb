@@ -16,8 +16,11 @@
         Форма
       </h1>
       <pre>
-        <%= form_tag("#", :method => :post, id: "main_linker_form") do %>
-        <% end %>
+        <form accept-charset="UTF-8" action="#" id="main_linker_form" method="get">
+          <div style="margin:0;padding:0;display:inline">
+            <input name="utf8" type="hidden" value="✓">
+          </div>
+        </form>
       </pre>
       <br>
       <pre class="col-md-12" id="edit_input_form" style="display: none;"></pre><pre class="col-md-8 col-md-offset-2">
@@ -26,14 +29,37 @@
         </h3>
         <br>
         Имя и id: 
-        <%= text_field_tag "new_input_name" %>
+        <input id="new_input_name" name="new_input_name" type="text">
         <br>
         Тип: 
-        <%= select_tag("new_input_type", options_for_select(['text','button','checkbox','file','hidden','image','password','radio','reset','submit','color','date','datetime','datetime-local','email','number','range','search','tel','time','url','month','week'])) %>
+        <select id="new_input_type" name="new_input_type"><option value="text">text</option>
+          <option value="button">button</option>
+          <option value="checkbox">checkbox</option>
+          <option value="file">file</option>
+          <option value="hidden">hidden</option>
+          <option value="image">image</option>
+          <option value="password">password</option>
+          <option value="radio">radio</option>
+          <option value="reset">reset</option>
+          <option value="submit">submit</option>
+          <option value="color">color</option>
+          <option value="date">date</option>
+          <option value="datetime">datetime</option>
+          <option value="datetime-local">datetime-local</option>
+          <option value="email">email</option>
+          <option value="number">number</option>
+          <option value="range">range</option>
+          <option value="search">search</option>
+          <option value="tel">tel</option>
+          <option value="time">time</option>
+          <option value="url">url</option>
+          <option value="month">month</option>
+          <option value="week">week</option>
+        </select>
         <br>
-        <%= submit_tag "Добавить input", id: "new_input_submit" %>
-        <%= submit_tag "Очистить", id: "new_input_clear" %>
-        <%= submit_tag "Удалить все", id: "new_input_delete_all" %>
+        <input id="new_input_submit" name="commit" type="submit" value="Добавить input">
+        <input id="new_input_clear" name="commit" type="submit" value="Очистить">
+        <input id="new_input_delete_all" name="commit" type="submit" value="Удалить все">
       </pre>
       <pre class="col-md-8 col-md-offset-2">
         <h3>
@@ -41,28 +67,33 @@
         </h3>
         Адрес для перехода (Дефолтно - покажет параметры)
         <br>
-        <%= text_field_tag "link" %>
+        <input id="link" name="link" type="text">
         <br>
         Тип запроса
         <br>
-        <%= select_tag("mtd", options_for_select(['get','post','patch','put','delete'])) %>
+        <select id="mtd" name="mtd"><option value="get">get</option>
+          <option value="post">post</option>
+          <option value="patch">patch</option>
+          <option value="put">put</option>
+          <option value="delete">delete</option>
+        </select>
         <br>
         <br>
-        <%= submit_tag "Сохранить cookie этой формы", id: "save_form_cookie" %>
+        <input id="save_form_cookie" name="commit" type="submit" value="Сохранить cookie этой формы">
         <br>
-        <%= submit_tag "Удалить cookie этой формы", id: "delete_form_cookie" %>
+        <input id="delete_form_cookie" name="commit" type="submit" value="Удалить cookie этой формы">
         <br>
         <br>
-        <%= submit_tag "Перейти", id: "main_linker_form_submit" %>
+        <input id="main_linker_form_submit" name="commit" type="submit" value="Перейти">
       </pre>
       <pre class="col-md-8 col-md-offset-2">
-        <%= submit_tag "Html формы", id: "full_form_html" %>
+        <input id="full_form_html" name="commit" type="submit" value="Html формы">
         <br>
         <textarea readonly id="full_form_html_textarea" style="display: none;width: 100%;">
         </textarea>
       </pre>
       <pre class="col-md-8 col-md-offset-2">
-        <%= submit_tag "Роуты", id: "full_routes_button" %>
+        <input id="full_routes_button" name="commit" type="submit" value="Роуты">
         <br>
         <br>
         <div id="full_routes" style="display: none;">
@@ -96,10 +127,3 @@
   </div>
 </div>
 <hr>
-<font color="white">Warning! Это вообще никак не относится ко всему, что выше. (Я тут тестирую, типа)
-  <div class="row center">
-    <div class="col-md-12">
-      <%= link_to "Скачать", download_path %> какую-то хрень
-    </div>
-  </div>
-</font>
