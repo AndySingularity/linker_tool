@@ -317,6 +317,7 @@ javascript:
 				$("div#linker_form_gem pre#put_main_form_here").append(form);
 				main_form = $("div#linker_form_gem form#main_linker_form");
 				main_form_div = $("div#linker_form_gem form#main_linker_form div");
+				change_method();
 				console.log("Form with token successfully loaded");
 				if ($("div#linker_form_gem pre#put_main_form_here").children().length < 1){
 					reinit();
