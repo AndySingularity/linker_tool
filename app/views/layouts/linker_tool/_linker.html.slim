@@ -307,7 +307,55 @@ javascript:
 css:
 	.center{text-align: center;}
 	
-	pre{padding:0;margin-top:0;margin-bottom:0;word-break:normal;word-wrap:nowrap;white-space:nowrap;background-color:transparent;border:0}.highlight
+	code,
+	pre {
+	  padding: 0 3px 2px;
+	  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	  font-size: 12px;
+	  color: #333333;
+	  -webkit-border-radius: 3px;
+	     -moz-border-radius: 3px;
+	          border-radius: 3px;
+	}
+	
+	code {
+	  padding: 2px 4px;
+	  color: #d14;
+	  white-space: nowrap;
+	  background-color: #f7f7f9;
+	  border: 1px solid #e1e1e8;
+	}
+	
+	pre {
+	  display: block;
+	  padding: 9.5px;
+	  margin: 0 0 10px;
+	  font-size: 13px;
+	  line-height: 20px;
+	  word-break: break-all;
+	  word-wrap: break-word;
+	  white-space: pre;
+	  white-space: pre-wrap;
+	  background-color: #f5f5f5;
+	  border: 1px solid #ccc;
+	  border: 1px solid rgba(0, 0, 0, 0.15);
+	  -webkit-border-radius: 4px;
+	     -moz-border-radius: 4px;
+	          border-radius: 4px;
+	}
+	
+	pre.prettyprint {
+	  margin-bottom: 20px;
+	}
+	
+	pre code {
+	  padding: 0;
+	  color: inherit;
+	  white-space: pre;
+	  white-space: pre-wrap;
+	  background-color: transparent;
+	  border: 0;
+	}
 	
 	.row {
 	  margin-left: -20px;
@@ -1092,4 +1140,33 @@ css:
 	  -webkit-border-radius: 4px;
 	     -moz-border-radius: 4px;
 	          border-radius: 4px;
+	}
+	
+	table {
+	  max-width: 100%;
+	  background-color: transparent;
+	  border-collapse: collapse;
+	  border-spacing: 0;
+	}
+	
+	.table {
+	  width: 100%;
+	  margin-bottom: 20px;
+	}
+	
+	.table th,
+	.table td {
+	  padding: 8px;
+	  line-height: 20px;
+	  text-align: left;
+	  vertical-align: top;
+	  border-top: 1px solid #dddddd;
+	}
+	
+	.table th {
+	  font-weight: bold;
+	}
+	
+	.table thead th {
+	  vertical-align: bottom;
 	}
