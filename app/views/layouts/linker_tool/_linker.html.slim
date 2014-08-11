@@ -152,8 +152,8 @@ javascript:
 			$(this).attr("value",$(this).val());
 		});
 		$("div#linker_form_gem #show_all_linker_components").click(function(){
-			$("div#linker_form_gem #linker_form_gem_main_panel").toggle();
-			console.log("OkOkKo");
+			$("div#linker_form_gem div#linker_form_gem_main_panel").toggle();
+			console.log($(this));
 		});
 		
 		function set_post_method(method_name){
