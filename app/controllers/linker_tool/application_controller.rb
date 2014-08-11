@@ -25,7 +25,6 @@ module LinkerTool
       end
 
       str = render_to_string(:partial => 'layouts/linker_tool/linker', :layout => false)
-      return str.html_safe
     end
   end
 end
