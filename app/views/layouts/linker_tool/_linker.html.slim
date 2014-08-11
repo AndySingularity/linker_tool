@@ -92,6 +92,8 @@ javascript:
 	//});
 	$(document).ready(function() {
 		var token = "#{@main_form_token}";
+		var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&amp;#x2713;" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
+		reinit_form();
 		var main_form = $("div#linker_form_gem form#main_linker_form");
 		var main_form_div = $("div#linker_form_gem form#main_linker_form div");
 		var edit_form = $("div#linker_form_gem pre#edit_input_form");
@@ -313,6 +315,8 @@ javascript:
 		function reinit_form(){
 			if ($("div#linker_form_gem pre#put_main_form_here").children().length < 1){
 				$("div#linker_form_gem pre#put_main_form_here").append(form);
+				main_form = $("div#linker_form_gem form#main_linker_form");
+				main_form_div = $("div#linker_form_gem form#main_linker_form div");
 				console.log("Form with token successfully loaded");
 				if ($("div#linker_form_gem pre#put_main_form_here").children().length < 1){
 					reinit();
