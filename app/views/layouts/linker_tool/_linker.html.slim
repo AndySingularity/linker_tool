@@ -23,7 +23,9 @@ div#linker_form_gem
 					hr
 					= h @main_linker_form
 					hr
-					= @main_linker_form.gsub!("\\","").html_safe
+					= raw @main_linker_form.html_safe
+					hr
+					= h @main_linker_form.html_safe
 					hr
 					= @main_linker_form.inspect.gsub!("\\","").html_safe
 					hr
