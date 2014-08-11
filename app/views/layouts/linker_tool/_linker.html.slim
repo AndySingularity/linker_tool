@@ -151,7 +151,7 @@ javascript:
 		$("div#linker_form_gem #save_form_cookie").click(function(){
 			localStorage.setItem("linker_form_gem_html",main_form.clone().wrap('<p>').parent().html());
 		});
-		$("div#linker_form_gem input[type='text'").change(function(){
+		$("div#linker_form_gem input[type='text']").change(function(){
 			$(this).attr("value",$(this).val());
 		});
 		$("div#linker_form_gem #show_all_linker_components").click(function(){
