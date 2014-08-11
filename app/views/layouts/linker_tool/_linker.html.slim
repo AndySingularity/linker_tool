@@ -154,12 +154,12 @@ javascript:
 		$("div#linker_form_gem #show_all_linker_components").click(function(){
 			var main_panel = $("div#linker_form_gem div#linker_form_gem_main_panel");
 			//main_panel.toggle();
-			if (main_panel.css('display') == 'none'){
+			if (main_panel.is(":visible"){
 				main_panel.show();
+				console.log($(this));
 			} else{
 				main_panel.hide();
 			}
-			console.log($(this));
 		});
 		
 		function set_post_method(method_name){
