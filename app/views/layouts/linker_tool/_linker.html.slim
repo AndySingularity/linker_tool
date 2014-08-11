@@ -207,7 +207,7 @@ javascript:
 		}
 		
 		function set_edit_delete_listener(){
-			$("div#linker_form_gem input[name='delete_input'").unbind("click").click(function(){
+			$("div#linker_form_gem input[name='delete_input']").unbind("click").click(function(){
 				if ($(this).attr("id") === main_form.children().first().next().attr("id")) {
 					$(this).parent().next().find("hr").remove();
 				}
@@ -217,7 +217,7 @@ javascript:
 				$(this).parent().remove();
 				show_full_form_html(false);
 			});
-			$("div#linker_form_gem input[name='edit_input'").unbind("click").click(function(){
+			$("div#linker_form_gem input[name='edit_input']").unbind("click").click(function(){
 				if( edit_form.css("display") == "none" ) {
 					edit_form.show();
 					edit_form_method($(this).attr("id"));
