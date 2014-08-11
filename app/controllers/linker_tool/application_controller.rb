@@ -2,9 +2,8 @@ module LinkerTool
   class ApplicationController < ActionController::Base
     def main_plate(prms,mn_lnkr_frm)
       @params = prms
-      @main_linker_form = mn_lnkr_frm
       # --- Here parse @main_linker_form
-      
+      @main_linker_form = mn_lnkr_frm.gsub!("","").html_safe
       # ---
       test_routes = []
   
