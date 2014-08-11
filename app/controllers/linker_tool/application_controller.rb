@@ -1,8 +1,8 @@
 module LinkerTool
   class ApplicationController < ActionController::Base
-    def main_plate(prms)
+    def main_plate(prms, auth)
       @params = prms
-      @main_form_token = form_authenticity_token
+      @main_form_token = auth
       test_routes = []
   
       Rails.application.routes.routes.each do |route|
