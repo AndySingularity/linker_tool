@@ -155,9 +155,9 @@ javascript:
 			var main_panel = $("div#linker_form_gem div#linker_form_gem_main_panel");
 			//main_panel.toggle();
 			if (main_panel.css('display') == 'none'){
-				main_panel.css('display','block');
+				main_panel.show();
 			} else{
-				main_panel.css('display','none');
+				main_panel.hide();
 			}
 			console.log($(this));
 		});
