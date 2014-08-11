@@ -64,7 +64,6 @@ div#linker_form_gem
 				pre.col-md-10.col-md-offset-1
 					= button_tag "Роуты", id: "full_routes_button", type: "button"
 					br
-					br
 					div#full_routes style="display: none;"
 						table border="1" style="width: 100%;"
 							tr
@@ -123,7 +122,12 @@ javascript:
 			check_num();
 			var name = $("div#linker_form_gem input#new_input_name").val();
 			var type = $("div#linker_form_gem select#new_input_type").val();
-			var this_input = '<input id="' + name + '" name="' + name + '" type="' + type + '">'
+			var this_input;
+			if (type == "select"){
+			  this_input = '<select id="' + name + '" name="' + name + '"></select>';
+			} else {
+			  this_input = '<input id="' + name + '" name="' + name + '" type="' + type + '">';
+			}
 			var str = '<span id="input_name">' + name + '</span> ' + this_input + '<input id="' + num + '" name="edit_input" value="edit" type="button">'+ '<input id="' + num + '" name="delete_input" value="delete" type="button">';
 			if (main_form.children().length > 1) {
 				str = '<hr>' + str;
