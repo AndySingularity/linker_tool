@@ -1,11 +1,11 @@
-div#linker_form_gem.col-md-8.col-md-offset-2
+div#linker_form_gem
 	div.center
 		= submit_tag "Linker Tool", id: "show_all_linker_components", type: "button"
 	div#linker_form_gem_main_panel style="background-image: url(http://svite-league-apps-content.s3.amazonaws.com/bgimages/grunge-paper.jpg);display: none;"
 		div.row.center
-			div.col-md-10.col-md-offset-1
+			div
 				br
-				pre
+				pre.col-md-10.col-md-offset-1
 						h3
 								| Параметры:
 						= @params.inspect
@@ -18,8 +18,8 @@ div#linker_form_gem.col-md-8.col-md-offset-2
 				br
 				br
 				br
-				pre.col-md-12 style="display: none;" id="edit_input_form"
-				pre.col-md-12
+				pre.col-md-10.col-md-offset-1 style="display: none;" id="edit_input_form"
+				pre.col-md-10.col-md-offset-1
 					h3
 						| Добавление нового input
 					br
@@ -33,7 +33,7 @@ div#linker_form_gem.col-md-8.col-md-offset-2
 					= button_tag "Очистить", id: "new_input_clear", type: "button"
 					= button_tag "Удалить все", id: "new_input_delete_all", type: "button"
 		
-				pre.col-md-12
+				pre.col-md-10.col-md-offset-1
 					h3
 						| Функции формы
 					| Адрес для перехода (Дефолтно - покажет параметры)
@@ -52,12 +52,12 @@ div#linker_form_gem.col-md-8.col-md-offset-2
 					br
 					= submit_tag "Перейти", id: "main_linker_form_submit", type: "button"
 		
-				pre.col-md-12
+				pre.col-md-10.col-md-offset-1
 					= button_tag "Html формы", id: "full_form_html", type: "button"
 					br
 					<textarea readonly id="full_form_html_textarea" style="display: none;width: 100%;"></textarea>
 					
-				pre.col-md-12
+				pre.col-md-10.col-md-offset-1
 					= button_tag "Роуты", id: "full_routes_button", type: "button"
 					br
 					br
