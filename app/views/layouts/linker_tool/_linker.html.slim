@@ -152,7 +152,13 @@ javascript:
 			$(this).attr("value",$(this).val());
 		});
 		$("div#linker_form_gem #show_all_linker_components").click(function(){
-			$("div#linker_form_gem div#linker_form_gem_main_panel").toggle();
+			var main_panel = $("div#linker_form_gem div#linker_form_gem_main_panel");
+			//main_panel.toggle();
+			if (main_panel.css('display') == 'none'){
+				main_panel.css('display','block');
+			} else{
+				main_panel.css('display','none');
+			}
 			console.log($(this));
 		});
 		
