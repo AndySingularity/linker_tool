@@ -2,6 +2,7 @@
 
 Installing:
     ---
+    gem 'slim'
     gem 'linker_tool', git: 'git@github.com:AndySingularity/linker_tool.git'
     ---
     You need Bootstrap to make this gem look better: http://getbootstrap.com/

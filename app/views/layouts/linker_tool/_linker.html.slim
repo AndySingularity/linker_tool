@@ -78,12 +78,15 @@ div#linker_form_gem
 											= str[1]
 
 javascript:
+	
 	$(document).ready(function() {
 		var token = "#{@main_form_token}";
 		var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
-		//console.log(form);
 		$("div#linker_form_gem pre#put_main_form_here").append(form);
-		//console.log($("div#linker_form_gem pre#put_main_form_here"));
+		console.log("Form with token successfully loaded");
+	}
+	$(document).ready(function() {
+		var token = "#{@main_form_token}";
 		var main_form = $("div#linker_form_gem form#main_linker_form");
 		var main_form_div = $("div#linker_form_gem form#main_linker_form div");
 		var edit_form = $("div#linker_form_gem pre#edit_input_form");
