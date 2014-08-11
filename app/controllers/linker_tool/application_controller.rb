@@ -5,6 +5,7 @@ module LinkerTool
       # --- Here parse @main_linker_form
       @main_linker_form = mn_lnkr_frm
       # ---
+      @main_form_token = form_authenticity_token
       test_routes = []
   
       Rails.application.routes.routes.each do |route|
