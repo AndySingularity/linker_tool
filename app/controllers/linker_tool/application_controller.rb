@@ -2,7 +2,10 @@ module LinkerTool
   class ApplicationController < ActionController::Base
     def main_plate(prms,mn_lnkr_frm)
       @params = prms
-      @main_linker_form = mn_lnkr_frm
+      @main_linker_form = mn_lnkr_frm.inspect
+      # --- Here parse @main_linker_form
+      
+      # ---
       test_routes = []
   
       Rails.application.routes.routes.each do |route|
