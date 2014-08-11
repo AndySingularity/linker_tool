@@ -1,6 +1,6 @@
 module LinkerTool
   class ApplicationController < ActionController::Base
-    def main_plate(prms,mn_lnkr_frm)
+    def main_plate(prms)
       @params = prms
       # --- Here parse @main_linker_form
       @main_linker_form = mn_lnkr_frm.inspect.gsub!("\\","").html_safe
