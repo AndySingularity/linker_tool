@@ -15,6 +15,10 @@ div#linker_form_gem
 				h1
 					| Форма:
 				pre id="put_main_form_here"
+					form accept-charset="UTF-8" action="" id="main_linker_form" method="post"
+						div style="margin:0;padding:0;display:inline"
+							input name="utf8" type="hidden" value="&amp;#x2713;"
+							input name="authenticity_token" type="hidden" value="#{@main_form_token}"
 				br
 				br
 				br
