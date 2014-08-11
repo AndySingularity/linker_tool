@@ -115,12 +115,13 @@ javascript:
 			check_num();
 			var name = $("div#linker_form_gem input#new_input_name").val();
 			var type = $("div#linker_form_gem select#new_input_type").val();
-			var this_input;
+			var this_input = '<div name="your_html_here" id="' + num + '">';
 			if (type == "select"){
-			  this_input = '<select id="' + name + '" name="' + name + '"></select>';
+			  this_input += '<select id="' + name + '" name="' + name + '"></select>';
 			} else {
-			  this_input = '<input id="' + name + '" name="' + name + '" type="' + type + '">';
+			  this_input += '<input id="' + name + '" name="' + name + '" type="' + type + '">';
 			}
+			this_input += '</div>';
 			var str = '<span id="input_name">' + name + '</span> ' + this_input + '<input id="' + num + '" name="edit_input" value="edit" type="button">'+ '<input id="' + num + '" name="delete_input" value="delete" type="button">';
 			str += '<input id="' + num + '" name="edit_input_as_html" value="edit as html" type="button">';
 			if (main_form.children().length > 1) {
@@ -213,6 +214,9 @@ javascript:
 			if (el.is("span")) {
 				el = el.next();
 			}
+			if (el.children().length !== 0){
+				el = el.children().first();
+			}
 			return el;
 		}
 		
@@ -229,11 +233,15 @@ javascript:
 			});
 			$("div#linker_form_gem input[name='edit_input']").unbind("click").click(function(){
 				if( edit_form.css("display") == "none" ) {
-					edit_form.show();
-					edit_form_method($(this).attr("id"));
+					if (find_my($(this).attr("id")).length !== 0){
+						edit_form.show();
+						edit_form_method($(this).attr("id"));
+					}
 				} else {
 					if (edit_form.attr("value") != $(this).attr("id")){
-						edit_form_method($(this).attr("id"));
+						if (find_my($(this).attr("id")).length !== 0){
+							edit_form_method($(this).attr("id"));
+						}
 					} else {
 						edit_form.hide();
 					}
@@ -243,15 +251,17 @@ javascript:
 			});
 			$("div#linker_form_gem input[name='edit_input_as_html']").unbind("click").click(function(){
 				var el = find_my($(this).attr("id"));
+				if (el.parent().parent().attr("id") === el.parent().attr("id")){
+					el = el.parent();
+				}
 				el.prev().hide();
 				el.next().hide();
 				el.next().next().hide();
 				el.next().next().next().hide();
-				var value_for_form = el.clone().wrap('<p>').parent().html();
-				// el.empty();
-				var str = '<textarea id="full_form_html_textarea" style="width: 100%; display: inline;"></textarea><br><input id="update_input_as_html" type="button" value="Submit">';
-				el.replaceWith(str);
-				$("div#linker_form_gem #full_form_html_textarea").html(value_for_form);
+				var value_for_form = el.html();
+				var str = '<textarea id="here_your_code_textarea" style="width: 100%; display: inline;"></textarea><br><input id="update_input_as_html" type="button" value="Submit">';
+				el.html(str);
+				el.find("textarea").html(value_for_form);
 				set_update_input_as_html_listener();
 			});
 		}
@@ -262,7 +272,7 @@ javascript:
 				var el = find_my(edit_form.attr("value"));
 				el.attr($("div#linker_form_gem #edit_form_attr").val(),$("div#linker_form_gem #edit_form_val").val());
 				if ($("div#linker_form_gem #edit_form_attr").val() == "name"){
-					el.prev().html($("div#linker_form_gem #edit_form_val").val());
+					el.parent().prev().html($("div#linker_form_gem #edit_form_val").val());
 				}
 				edit_form_method(edit_form.attr("value"));
 				set_update_input_listener();
@@ -286,15 +296,12 @@ javascript:
 			$("div#linker_form_gem #update_input_as_html").unbind("click").click(function(){
 				$(this).prev().remove();
 				var input_replace = $(this).prev().val().replace("&lt;","<").replace("&gt;",">");
-				console.log(input_replace);
-				$(this).prev().prev().show();
-				$(this).next().show();
-				$(this).next().next().show();
-				$(this).next().next().next().show();
-				$(this).prev().replaceWith(input_replace);
-				var el = find_my($(this).next().attr("id"))
-				el.prev().html(el.attr("name"));
-				$(this).remove();
+				var home_dir = $(this).parent();
+				home_dir.empty();
+				home_dir.parent().find("input").show();
+				home_dir.html(input_replace);
+				home_dir.parent().find("span").show();
+				home_dir.parent().find("span").html(home_dir.find("[name]").attr("name"));
 			});
 		}
 		
