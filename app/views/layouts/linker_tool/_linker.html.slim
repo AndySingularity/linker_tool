@@ -80,7 +80,7 @@ div#linker_form_gem
 javascript:
 	$(document).ready(function() {
 		var token = "#{@main_form_token}";
-		var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&amp;#x2713;" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
+		var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
 		//console.log(form);
 		$("div#linker_form_gem pre#put_main_form_here").append(form);
 		//console.log($("div#linker_form_gem pre#put_main_form_here"));
