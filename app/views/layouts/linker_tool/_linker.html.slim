@@ -21,6 +21,8 @@ div#linker_form_gem
 					hr
 					= raw String.new(@main_linker_form)
 					hr
+					= h String.new(@main_linker_form)
+					hr
 					= h @main_linker_form
 					hr
 					= raw @main_linker_form.html_safe
@@ -29,9 +31,9 @@ div#linker_form_gem
 					hr
 					= @main_linker_form.inspect.gsub!("\\","").html_safe
 					hr
-					= String.new(@main_linker_form).gsub!("\\","").html_safe
+					= String.new(@main_linker_form)
 					hr
-					= String.new(@main_linker_form).inspect.gsub!("\\","").html_safe
+					= String.new(@main_linker_form).inspect
 				br
 				br
 				br
