@@ -82,16 +82,9 @@ div#linker_form_gem
 
 javascript:
 	
-	//$(document).ready(function() {
-	//	var token = "#{@main_form_token}";
-	//	var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&amp;#x2713;" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
-	//	console.log("Loading form...");
-	//	reinit();
-	//	
-	//});
 	$(document).ready(function() {
 		var token = "#{@main_form_token}";
-		var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&amp;#x2713;" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
+		var form = '<form accept-charset="UTF-8" action="" id="main_linker_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="authenticity_token" type="hidden" value="' + token + '" /></div></form>';
 		reinit_form();
 		var main_form = $("div#linker_form_gem form#main_linker_form");
 		var main_form_div = $("div#linker_form_gem form#main_linker_form div");
@@ -194,7 +187,7 @@ javascript:
 			for (var attr, i=0, attrs=el[0].attributes, l=attrs.length; i<l; i++){
 					attr = attrs.item(i);
 					nodes.push(attr.nodeName);
-					values.push(attr.nodeValue);
+					values.push(attr.value);
 			}
 			var str = "<table border='1' class='table'><tr>";
 			nodes.forEach(function(entry) {
@@ -206,8 +199,12 @@ javascript:
 			});
 			str = str + "</tr></table>";
 			str = str + 'Атрибут : Значение<br><input id="edit_form_attr" type="text"> : <input id="edit_form_val" type="text">';
-			edit_form.append(str + '<input id="update_input" type="button" value="Обновить">');
-			edit_form.val(input_id);
+			var result_str = str + '<input id="update_input" type="button" value="Обновить">';
+			if (el.is("select")){
+			  result_str += '<br><br>Добавить значения в select<br>Название : Значение(дефолтно - равно названию)<br><input id="new_select_option_name" type="text"> : <input id="new_select_option_value" type="text"><input id="update_select" value="Добавить значение" type="button">';
+			}
+			edit_form.append(result_str);
+			edit_form.attr("value",input_id);
 		}
 		
 		function find_my(input_id){
@@ -223,7 +220,7 @@ javascript:
 				if ($(this).attr("id") === main_form.children().first().next().attr("id")) {
 					$(this).parent().next().find("hr").remove();
 				}
-				if ($(this).parent().attr("id") === edit_form.val()){
+				if ($(this).parent().attr("id") === edit_form.attr("value")){
 					edit_form.hide();
 				}
 				$(this).parent().remove();
@@ -234,7 +231,7 @@ javascript:
 					edit_form.show();
 					edit_form_method($(this).attr("id"));
 				} else {
-					if (edit_form.val() != $(this).attr("id")){
+					if (edit_form.attr("value") != $(this).attr("id")){
 						edit_form_method($(this).attr("id"));
 					} else {
 						edit_form.hide();
@@ -247,12 +244,24 @@ javascript:
 		
 		function set_update_input_listener(){
 			$("div#linker_form_gem input#update_input").unbind("click").click(function(){
-				var el = find_my(edit_form.val());
+				var el = find_my(edit_form.attr("value"));
 				el.attr($("div#linker_form_gem #edit_form_attr").val(),$("div#linker_form_gem #edit_form_val").val());
 				if ($("div#linker_form_gem #edit_form_attr").val() == "name"){
 					el.prev().html($("div#linker_form_gem #edit_form_val").val());
 				}
-				edit_form_method(edit_form.val());
+				edit_form_method(edit_form.attr("value"));
+				set_update_input_listener();
+				show_full_form_html(false);
+			});
+			$("div#linker_form_gem #update_select").unbind("click").click(function(){
+				var el = find_my(edit_form.attr("value"));
+				var new_select_value = $("div#linker_form_gem #new_select_option_value").val();
+				var new_select_name = $("div#linker_form_gem #new_select_option_name").val();
+				if (new_select_value === ""){
+					new_select_value = new_select_name;
+				}
+				var new_option = new Option(new_select_name, new_select_value);
+				el.append(new_option);
 				set_update_input_listener();
 				show_full_form_html(false);
 			});
@@ -324,7 +333,7 @@ javascript:
 				change_method();
 				console.log("Form with token successfully loaded");
 				if ($("div#linker_form_gem pre#put_main_form_here").children().length < 1){
-					reinit();
+					reinit_form();
 				}
 			}
 		}

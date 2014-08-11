@@ -139,7 +139,13 @@ $(document).ready(function() {
 		});
 		str = str + "</tr></table>";
 		str = str + 'Атрибут : Значение<br><input id="edit_form_attr" type="text"> : <input id="edit_form_val" type="text">';
-		edit_form.append(str + '<input id="update_input" type="button" value="Обновить">');
+		//---
+		var result_str = str + '<input id="update_input" type="button" value="Обновить">';
+		if (el.is("select")){
+		  result_str += '<br>Добавить значения в select<br>Название : Значение(дефолтно - равно названию)<br><input id="new_select_option_name" type="text"> : <input id="new_select_option_value" type="text"><input id="update_select" value="Добавить значение" type="button">';
+		}
+		edit_form.append(result_str);
+		//---
 		edit_form.val(input_id);
 	}
 	
@@ -257,7 +263,7 @@ $(document).ready(function() {
 			change_method();
 			console.log("Form with token successfully loaded");
 			if ($("div#linker_form_gem pre#put_main_form_here").children().length < 1){
-				reinit();
+				reinit_form();
 			}
 		}
 	}
