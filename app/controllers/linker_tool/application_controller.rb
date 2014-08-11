@@ -3,7 +3,7 @@ module LinkerTool
     def main_plate(prms,mn_lnkr_frm)
       @params = prms
       # --- Here parse @main_linker_form
-      @main_linker_form = mn_lnkr_frm.gsub!("","").html_safe
+      @main_linker_form = mn_lnkr_frm.inspect.gsub!("\\","").html_safe
       # ---
       test_routes = []
   
