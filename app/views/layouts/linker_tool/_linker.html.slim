@@ -80,6 +80,8 @@ div#linker_form_gem
 
 javascript:
 	$(document).ready(function() {
+		window._token = '<%= form_authenticity_token %>';
+		console.log(window._token);
 		var main_form = $("div#linker_form_gem form#main_linker_form");
 		var main_form_div = $("div#linker_form_gem form#main_linker_form div");
 		var edit_form = $("div#linker_form_gem pre#edit_input_form");
