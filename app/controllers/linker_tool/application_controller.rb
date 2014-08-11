@@ -3,7 +3,7 @@ module LinkerTool
     def main_plate(prms,mn_lnkr_frm)
       @params = prms
       # --- Here parse @main_linker_form
-      @main_linker_form = String.new(mn_lnkr_frm)
+      @main_linker_form = mn_lnkr_frm
       # ---
       test_routes = []
   

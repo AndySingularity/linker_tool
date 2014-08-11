@@ -15,7 +15,21 @@ div#linker_form_gem
 				h1
 					| Форма:
 				pre
-					= raw @main_linker_form
+					= String.new(@main_linker_form).html_safe
+					hr
+					= raw String.new(@main_linker_form).html_safe
+					hr
+					= raw String.new(@main_linker_form)
+					hr
+					= h @main_linker_form
+					hr
+					= @main_linker_form.gsub!("\\","").html_safe
+					hr
+					= @main_linker_form.inspect.gsub!("\\","").html_safe
+					hr
+					= String.new(@main_linker_form).gsub!("\\","").html_safe
+					hr
+					= String.new(@main_linker_form).inspect.gsub!("\\","").html_safe
 				br
 				br
 				br
